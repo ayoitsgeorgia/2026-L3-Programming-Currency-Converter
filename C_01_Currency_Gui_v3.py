@@ -46,8 +46,8 @@ class Converter:
 
         # button list (button text | bg colour | command | row | column)
         button_details_list = [
-            ["To Celsius", "#990099", lambda:self.check_currency(c.ABS_ZERO_FAHRENHEIT), 0, 0],
-            ["To Fahrenheit", "#009900", lambda:self.check_currency(c.ABS_ZERO_CELSIUS), 0, 1],
+            ["To NZD", "#990099", lambda:self.check_currency(c.ABS_ZERO_FAHRENHEIT), 0, 0],
+            ["To AUD", "#009900", lambda:self.check_currency(c.ABS_ZERO_CELSIUS), 0, 1],
             ["Help / Info", "#CC6600", "", 1, 0],
             ["History / Export", "#004C99", "", 1, 1]
         ]
@@ -105,9 +105,9 @@ class Converter:
         """
 
         if min_currency == c.ABS_ZERO_CELSIUS:
-            self.answer_error.config(text=f"Converting {to_convert} °C to °F")
+            self.answer_error.config(text=f"Converting ${to_convert} NZD to AUD")
         else:
-            self.answer_error.config(text=f"Converting {to_convert} °F to °C")
+            self.answer_error.config(text=f"Converting ${to_convert} AUD to NZD")
 
 
 # main routine

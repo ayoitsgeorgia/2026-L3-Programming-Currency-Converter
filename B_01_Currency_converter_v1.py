@@ -51,8 +51,8 @@ class Converter:
 
         # button list (button text | bg colour | command | row | column)
         button_details_list = [
-            ["To Celsius", "#990099", lambda: self.check_temp(c.ABS_ZERO_FAHRENHEIT), 0, 0],
-            ["To Fahrenheit", "#009900", lambda: self.check_temp(c.ABS_ZERO_CELSIUS), 0, 1],
+            ["To NZD", "#990099", lambda: self.check_temp(c.ABS_ZERO_FAHRENHEIT), 0, 0],
+            ["To AUD", "#009900", lambda: self.check_temp(c.ABS_ZERO_CELSIUS), 0, 1],
             ["Help / Info", "#CC6600", self.to_help, 1, 0],
             ["History / Export", "#004C99", self.to_history, 1, 1]
         ]
@@ -114,11 +114,11 @@ class Converter:
         """
 
         if min_temp == c.ABS_ZERO_CELSIUS:
-            answer = cr.to_fahrenheit(to_convert)
-            answer_statement = f"{to_convert}°C is {answer}°F"
+            answer = cr.to_aud(to_convert)
+            answer_statement = f"${to_convert} NZD is ${answer} AUD"
         else:
-            answer = cr.to_celsius(to_convert)
-            answer_statement = f"{to_convert} °F is {answer}°C"
+            answer = cr.to_nzd(to_convert)
+            answer_statement = f"${to_convert} AUD is ${answer} NZD"
 
         # enable history export button as soon as we have a valid calculation
         self.to_history_button.config(state=NORMAL)

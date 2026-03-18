@@ -4,8 +4,9 @@ def round_ans(val):
     :param val: Number to be rounded
     :return: Number rounded to the nearest cent
     """
-    var_rounded = (val * 2 + 1) // 2
-    return "{:.0f}".format(var_rounded)
+    # shift to cents, round up, and shift back
+    var_rounded = (val * 100 * 2 + 1) // 2 / 100
+    return "{:.2f}".format(var_rounded)
 
 
 def to_nzd(to_convert):
@@ -14,7 +15,7 @@ def to_nzd(to_convert):
     :param to_convert: Currency to be converted in AUD
     :return: Converted Currency in NZD
     """
-    answer = (to_convert - 32) * 5 / 9
+    answer = to_convert * 1.21
     return round_ans(answer)
 
 
@@ -24,6 +25,6 @@ def to_aud(to_convert):
     ":param to_convert: Currency to be converted in NZD
      :return: Converted temperature in AUD
      """
-    answer = to_convert * 1.8 + 32
-    return round_ans(answer)
+    answer = to_convert * 0.82
 
+    return round_ans(answer)
