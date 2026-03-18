@@ -12,11 +12,11 @@ day = today.strftime("%d")
 month = today.strftime("%m")
 year = today.strftime("%Y")
 
-file_name = f"temperatures_{year}_{month}_{day}"
+file_name = f"Currency_{year}_{month}_{day}"
 write_to = f"{file_name}.txt"
 
 with open(write_to, "w") as text_file:
-    text_file.write("***** Temperature Calculations *****\n")
+    text_file.write("***** Currency Calculations *****\n")
     text_file.write(f"Generated: {day}/{month}/{year}\n\n")
     text_file.write("Here is your calculation history (oldest to newest)...\n")
 

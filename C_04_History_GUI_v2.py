@@ -17,10 +17,10 @@ class Converter:
                                       '30.0 °F is -1°C', '40.0 °F is 4°C',
                                       '50.0 °F is 10°C']
 
-        self.temp_frame = Frame(padx=10, pady=10)
-        self.temp_frame.grid()
+        self.currency_frame = Frame(padx=10, pady=10)
+        self.currency_frame.grid()
 
-        self.to_history_button = Button(self.temp_frame,
+        self.to_history_button = Button(self.currency_frame,
                                         text="History / Export",
                                         bg="#CC6600",
                                         fg="#FFFFFF",

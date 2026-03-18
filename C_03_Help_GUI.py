@@ -12,10 +12,10 @@ class Converter:
         Temperature converter GUI
         """
 
-        self.temp_frame = Frame(padx=10, pady=10)
-        self.temp_frame.grid()
+        self.currency_frame = Frame(padx=10, pady=10)
+        self.currency_frame.grid()
 
-        self.to_help_button = Button(self.temp_frame,
+        self.to_help_button = Button(self.currency_frame,
                                      text="Help / Info",
                                      bg="#CC6600",
                                      fg="#FFFFFF",
@@ -86,6 +86,6 @@ class DisplayHelp:
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("Temperature Converter")
+    root.title("Currency Converter")
     Converter()
     root.mainloop()
