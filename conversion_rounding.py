@@ -21,7 +21,7 @@ def to_nzd(to_convert):
 
 def to_aud(to_convert):
     """
-     Converts from NZD to AUd
+     Converts from NZD to AUD
     ":param to_convert: Currency to be converted in NZD
      :return: Converted temperature in AUD
      """
