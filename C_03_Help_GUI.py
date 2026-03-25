@@ -4,12 +4,12 @@ from functools import partial  # To prevent unwanted windows
 
 class Converter:
     """
-    Temperature conversion tool (C to F or F to C)
+    Currency conversion tool (NZD to AUD or AUD to NZD)
     """
 
     def __init__(self):
         """
-        Temperature converter GUI
+        Currency converter GUI
         """
 
         self.currency_frame = Frame(padx=10, pady=10)

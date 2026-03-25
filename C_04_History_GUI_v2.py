@@ -5,12 +5,12 @@ import all_constants as c
 
 class Converter:
     """
-    Temperature conversion tool (C to F or F to C)
+    Currency conversion tool (NZD to AUD or AUD to NZD)
     """
 
     def __init__(self):
         """
-        Temperature converter GUI
+        Currency converter GUI
         """
 
         self.all_calculations_list = ['10.0 °F is -12°C', '20.0 °F is -7°C',
@@ -145,6 +145,6 @@ class ExportHistory:
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("Temperature Converter")
+    root.title("Currency Converter")
     Converter()
     root.mainloop()

@@ -46,8 +46,8 @@ class Converter:
 
         # button list (button text | bg colour | command | row | column)
         button_details_list = [
-            ["To NZD", "#990099", lambda:self.check_currency(c.ABS_ZERO_FAHRENHEIT), 0, 0],
-            ["To AUD", "#009900", lambda:self.check_currency(c.ABS_ZERO_CELSIUS), 0, 1],
+            ["To NZD", "#990099", lambda:self.check_currency(c.ABS_ZERO_AUD), 0, 0],
+            ["To AUD", "#009900", lambda:self.check_currency(c.ABS_ZERO_NZD), 0, 1],
             ["Help / Info", "#CC6600", "", 1, 0],
             ["History / Export", "#004C99", "", 1, 1]
         ]
@@ -104,7 +104,7 @@ class Converter:
         Converts currency and updates answer label. Also stores calculations for Export / History features
         """
 
-        if min_currency == c.ABS_ZERO_CELSIUS:
+        if min_currency == c.ABS_ZERO_NZD:
             self.answer_error.config(text=f"Converting ${to_convert} NZD to AUD")
         else:
             self.answer_error.config(text=f"Converting ${to_convert} AUD to NZD")

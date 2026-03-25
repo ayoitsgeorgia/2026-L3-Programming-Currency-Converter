@@ -5,12 +5,12 @@ import conversion_rounding as cr
 
 class Converter:
     """
-    Temperature conversion tool (C to F or F to C)
+    Currency conversion tool (NZD to AUD or AUD to NZD)
     """
 
     def __init__(self):
         """
-        Temperature converter GUI
+        Currency converter GUI
         """
 
         self.all_calculations_list = []
@@ -19,12 +19,12 @@ class Converter:
         self.currency_frame.grid()
 
         self.currency_heading = Label(self.currency_frame,
-                                      text="Temperature Converter",
+                                      text="Currency Converter",
                                       font=("Arial", "16", "bold")
                                       )
         self.currency_heading.grid(row=0)
 
-        instructions = ("Please enter a temperature below and then press "
+        instructions = ("Please enter a currency below and then press "
                         "one of the buttons to convert it from centigrade "
                         "to Fahrenheit.")
         self.currency_instructions = Label(self.currency_frame,
@@ -49,8 +49,8 @@ class Converter:
 
         # button list (button text | bg colour | command | row | column)
         button_details_list = [
-            ["To NZD", "#990099", lambda: self.check_currency(c.ABS_ZERO_FAHRENHEIT), 0, 0],
-            ["To AUD", "#009900", lambda: self.check_currency(c.ABS_ZERO_CELSIUS), 0, 1],
+            ["To NZD", "#990099", lambda: self.check_currency(c.ABS_ZERO_AUD), 0, 0],
+            ["To AUD", "#009900", lambda: self.check_currency(c.ABS_ZERO_NZD), 0, 1],
             ["Help / Info", "#CC6600", "", 1, 0],
             ["History / Export", "#004C99", "", 1, 1]
         ]
@@ -73,10 +73,10 @@ class Converter:
 
     def check_currency(self, min_currency):
         """
-        Checks temperature is valid and either invokes calculation function or shows a custom error
+        Checks currency is valid and either invokes calculation function or shows a custom error
         """
 
-        # Retrieve temperature to be converted
+        # Retrieve currency to be converted
         to_convert = self.currency_entry.get()
 
         # reset label and entry box (if we had an error)
@@ -105,10 +105,10 @@ class Converter:
 
     def convert(self, min_currency, to_convert):
         """
-        Converts temperature and updates answer label. Also stores calculations for Export / History features
+        Converts currency and updates answer label. Also stores calculations for Export / History features
         """
 
-        if min_currency == c.ABS_ZERO_CELSIUS:
+        if min_currency == c.ABS_ZERO_NZD:
             answer = cr.to_aud(to_convert)
             answer_statement = f"${to_convert} NZD is ${answer} AUD"
         else:
@@ -125,6 +125,6 @@ class Converter:
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("Temperature Converter")
+    root.title("Currency Converter")
     Converter()
     root.mainloop()
