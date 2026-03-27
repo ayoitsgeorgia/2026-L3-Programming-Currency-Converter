@@ -1,5 +1,6 @@
 from tkinter import *
 import all_constants as c
+import conversion_rounding as cr
 
 
 class Converter:
@@ -12,6 +13,8 @@ class Converter:
         Currency converter GUI
         """
 
+        self.all_calculations_list = []
+
         self.currency_frame = Frame(padx=10, pady=10)
         self.currency_frame.grid()
 
@@ -22,8 +25,8 @@ class Converter:
         self.currency_heading.grid(row=0)
 
         instructions = ("Please enter a currency below and then press "
-                        "one of the buttons to convert it from AUD "
-                        "to NZD.")
+                        "one of the buttons to convert it from NZD "
+                        "to AUD.")
         self.currency_instructions = Label(self.currency_frame,
                                            text=instructions,
                                            wraplength=250, width=40,
@@ -46,8 +49,8 @@ class Converter:
 
         # button list (button text | bg colour | command | row | column)
         button_details_list = [
-            ["To NZD", "#990099", lambda:self.check_currency(c.MINIMUM_AUD), 0, 0],
-            ["To AUD", "#009900", lambda:self.check_currency(c.MINIMUM_NZD), 0, 1],
+            ["To NZD", "#990099", lambda: self.check_currency(c.MINIMUM_AUD, c.MAXIMUM_AUD), 0, 0],
+            ["To AUD", "#009900", lambda: self.check_currency(c.MINIMUM_NZD, c.MAXIMUM_NZD), 0, 1],
             ["Help / Info", "#CC6600", "", 1, 0],
             ["History / Export", "#004C99", "", 1, 1]
         ]
@@ -65,9 +68,10 @@ class Converter:
             self.button_ref_list.append(self.make_button)
 
         # retrieve 'history / export' button and disable it at the start
-        self.to_history_button = self.button_ref_list[3].config(state=DISABLED)
+        self.to_history_button = self.button_ref_list[3]
+        self.to_history_button.config(state=DISABLED)
 
-    def check_currency(self, min_currency):
+    def check_currency(self, min_currency, max_currency):
         """
         Checks currency is valid and either invokes calculation function or shows a custom error
         """
@@ -79,19 +83,21 @@ class Converter:
         self.answer_error.config(fg="#004C99", font=("Arial", "13", "bold"))
         self.currency_entry.config(bg="#FFFFFF")
 
-        error = f"Enter a number more than / equal to {min_currency}"
-        has_error = "no"
-
         # checks that amount to be converted is a number above zero
         try:
             to_convert = float(to_convert)
-            if to_convert >= min_currency:
+            if to_convert < min_currency:
+                error = f"Too small (min ${min_currency})"
+
+            elif to_convert > max_currency:
+                error = f"Too large (max ${max_currency})"
+
+            else:
                 error = ""
                 self.convert(min_currency, to_convert)
-            else:
-                error = "Too Low"
+
         except ValueError:
-            error = f"Enter a number more than / equal to {min_currency}"
+            error = f"Please enter a number between ${min_currency} and ${max_currency}"
 
         # display the error of necessary
         if error != "":
@@ -105,9 +111,17 @@ class Converter:
         """
 
         if min_currency == c.MINIMUM_NZD:
-            self.answer_error.config(text=f"Converting ${to_convert} NZD to AUD")
+            answer = cr.to_aud(to_convert)
+            answer_statement = f"${to_convert} NZD is ${answer} AUD"
         else:
-            self.answer_error.config(text=f"Converting ${to_convert} AUD to NZD")
+            answer = cr.to_nzd(to_convert)
+            answer_statement = f"${to_convert} AUD is ${answer} NZD"
+
+        # enable history export button as soon as we have a valid calculation
+        self.to_history_button.config(state=NORMAL)
+        self.answer_error.config(text=answer_statement)
+        self.all_calculations_list.append(answer_statement)
+        print(self.all_calculations_list)
 
 
 # main routine

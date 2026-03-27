@@ -27,8 +27,8 @@ class Converter:
         self.currency_heading.grid(row=0)
 
         instructions = ("Please enter a currency below and then press "
-                        "one of the buttons to convert it from centigrade "
-                        "to Fahrenheit.")
+                        "one of the buttons to convert it from New Zealand Dollars "
+                        "to Australian Dollars.")
         self.currency_instructions = Label(self.currency_frame,
                                            text=instructions,
                                            wraplength=250, width=40,
@@ -51,8 +51,8 @@ class Converter:
 
         # button list (button text | bg colour | command | row | column)
         button_details_list = [
-            ["To NZD", "#990099", lambda: self.check_currency(c.ABS_ZERO_AUD), 0, 0],
-            ["To AUD", "#009900", lambda: self.check_currency(c.ABS_ZERO_NZD), 0, 1],
+            ["To NZD", "#990099", lambda: self.check_currency(c.MINIMUM_AUD), 0, 0],
+            ["To AUD", "#009900", lambda: self.check_currency(c.MINIMUM_NZD), 0, 1],
             ["Help / Info", "#CC6600", self.to_help, 1, 0],
             ["History / Export", "#004C99", self.to_history, 1, 1]
         ]
@@ -91,7 +91,7 @@ class Converter:
         error = f"Enter a number more than / equal to {min_currency}"
         has_error = "no"
 
-        # checks that amount to be converted is a number above absolute zero
+        # checks that amount to be converted is a number above zero
         try:
             to_convert = float(to_convert)
             if to_convert >= min_currency:
@@ -113,7 +113,7 @@ class Converter:
         Converts currency and updates answer label. Also stores calculations for Export / History features
         """
 
-        if min_currency == c.ABS_ZERO_NZD:
+        if min_currency == c.MINIMUM_NZD:
             answer = cr.to_aud(to_convert)
             answer_statement = f"${to_convert} NZD is ${answer} AUD"
         else:
