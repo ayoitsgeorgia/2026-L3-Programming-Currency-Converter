@@ -46,8 +46,8 @@ class Converter:
 
         # button list (button text | bg colour | command | row | column)
         button_details_list = [
-            ["To NZD", "#990099", lambda:self.check_currency(c.MINIMUM_AUD), 0, 0],
-            ["To AUD", "#009900", lambda:self.check_currency(c.MINIMUM_NZD), 0, 1],
+            ["To NZD", "#990099", lambda: self.check_currency(c.MINIMUM_AUD), 0, 0],
+            ["To AUD", "#009900", lambda: self.check_currency(c.MINIMUM_NZD), 0, 1],
             ["Help / Info", "#CC6600", "", 1, 0],
             ["History / Export", "#004C99", "", 1, 1]
         ]
@@ -79,8 +79,7 @@ class Converter:
         self.answer_error.config(fg="#004C99", font=("Arial", "13", "bold"))
         self.currency_entry.config(bg="#FFFFFF")
 
-        error = f"Enter a number more than / equal to {min_currency}"
-        has_error = "no"
+        f"Enter a number more than / equal to {min_currency}"
 
         # checks that amount to be converted is a number above zero
         try:

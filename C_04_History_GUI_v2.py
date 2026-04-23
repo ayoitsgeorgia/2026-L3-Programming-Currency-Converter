@@ -13,9 +13,9 @@ class Converter:
         Currency converter GUI
         """
 
-        self.all_calculations_list = ['10.0 °F is -12°C', '20.0 °F is -7°C',
-                                      '30.0 °F is -1°C', '40.0 °F is 4°C',
-                                      '50.0 °F is 10°C']
+        self.all_calculations_list = ['$10.00 NZD is $12.10 AUD', '$20.00 NZD is $24.20 AUD',
+                                      '$30.00 NZD is $36.30 AUD', '$40.00 NZD is $48.40 AUD',
+                                      '$50.00 NZD is $60.50 AUD']
 
         self.currency_frame = Frame(padx=10, pady=10)
         self.currency_frame.grid()
@@ -90,8 +90,6 @@ class ExportHistory:
         export_instruction_txt = ("export this"
                                   ":)")
 
-        calculations = ""
-
         # Label list text, format, bg)
         history_labels_list = [
             ["History / Export", ("Arial", "16", "bold"), None],
@@ -116,8 +114,6 @@ class ExportHistory:
         # make frame to hold buttons (two columns)
         self.history_button_frame = Frame(self.history_box)
         self.history_button_frame.grid(row=4)
-
-        button_ref_list = []
 
         # button list (button text | bg colour | command | row | column)
         button_details_list = [
