@@ -53,7 +53,11 @@ class DisplayHelp:
                                         font=("Arial", "14", "bold"))
         self.help_heading_label.grid(row=0)
 
-        help_text = "help text goes here"
+        help_text = ("Use the to NZD button to convert AUD intro NZD, and the to AUD button to convert NZD to AUD."
+                     " Enter any amount between 0.01 and 10,000, then click the appropriate button to see the converted"
+                     "value based on April 2026 rates."
+
+                     " You can also click Export to save and download your input and results for later use or sharing.")
 
         self.help_text_label = Label(self.help_frame,
                                      text=help_text, wraplength=350,

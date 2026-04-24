@@ -165,7 +165,11 @@ class DisplayHelp:
                                         font=("Arial", "14", "bold"))
         self.help_heading_label.grid(row=0)
 
-        help_text = "help text goes here"
+        help_text = ("Use the to NZD button to convert AUD intro NZD, and the to AUD button to convert NZD to AUD."
+                     " Enter any amount between 0.01 and 10,000, then click the appropriate button to see the converted"
+                     "value based on April 2026 rates."
+
+                     " You can also click Export to save and download your input and results for later use or sharing.")
 
         self.help_text_label = Label(self.help_frame,
                                      text=help_text, wraplength=350,
@@ -226,7 +230,7 @@ class ExportHistory:
 
         # strings for 'long' tables...
         recent_intro_txt = (f"Below are {calc_amount} calculations "
-                            f"(to the nearest degree)")
+                            f"(to the nearest cent)")
 
         # Create string from calculations list (the newest calculation first)
         newest_first_string = ""
@@ -247,8 +251,10 @@ class ExportHistory:
 
             newest_first_string += newest_first_list[c.MAX_CALCS - 1]
 
-        export_instruction_txt = ("export this"
-                                  ":)")
+        export_instruction_txt = ("Click the Export button below your input to save your work. "
+                                  "Your input will be stored and exported, allowing you to access it later or share "
+                                  "it easily. "
+                                  "Make sure your content is complete before exporting to ensure nothing is missed!")
 
         calculations = ""
 

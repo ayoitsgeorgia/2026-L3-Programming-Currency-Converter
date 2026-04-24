@@ -87,8 +87,10 @@ class ExportHistory:
 
             newest_first_string += newest_first_list[c.MAX_CALCS - 1]
 
-        export_instruction_txt = ("export this"
-                                  ":)")
+        export_instruction_txt = ("Click the Export button below your input to save your work. "
+                                  "Your input will be stored and exported, allowing you to access it later or share "
+                                  "it easily. "
+                                  "Make sure your content is complete before exporting to ensure nothing is missed!")
 
         # Label list text, format, bg)
         history_labels_list = [
