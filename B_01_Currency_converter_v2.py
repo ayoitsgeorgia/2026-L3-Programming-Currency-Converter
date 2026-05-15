@@ -28,7 +28,7 @@ class Converter:
 
         instructions = ("Please enter a currency below and then press "
                         "one of the buttons to convert it from New Zealand Dollars "
-                        "to Australian Dollars.")
+                        "to Australian Dollars, or from Australian Dollars to New Zealand Dollars")
         self.currency_instructions = Label(self.currency_frame,
                                            text=instructions,
                                            wraplength=250, width=40,
@@ -121,7 +121,7 @@ class Converter:
         else:  # to nzd
             answer = cr.to_nzd(to_convert)
 
-            answer_statement = f"${to_convert:.2f} NZD is ${answer} AUD"
+            answer_statement = f"${to_convert:.2f} AUD is ${answer} NZD"
 
             # enable history export button as soon as we have a valid calculation
         self.to_history_button.config(state=NORMAL)

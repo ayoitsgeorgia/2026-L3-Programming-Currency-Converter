@@ -25,6 +25,7 @@ def to_aud(to_convert):
     ":param to_convert: Currency to be converted in NZD
      :return: Converted temperature in AUD
      """
+
     answer = to_convert * 0.82
 
     return round_ans(answer)
